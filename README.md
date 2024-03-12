@@ -1,4 +1,4 @@
-# WorldDate JavaScript Library
+# WorldDate
 
 Welcome to the WorldDate library – a powerful and versatile JavaScript library for seamless date and time manipulation. This library offers a comprehensive set of functions designed to handle various aspects of date and time, ensuring accuracy and ease of use in a variety of applications.
 

@@ -13,9 +13,6 @@
     "type": "git",
     "url": "https://github.com/canvas-tech-horizon/World-Date"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "scripts": {
     "build": "tsup"
   },
