@@ -1,0 +1,31 @@
+{
+  "name": "world-date",
+  "description": "Welcome to the WorldDate library – a powerful and versatile JavaScript library for seamless date and time manipulation. This library offers a comprehensive set of functions designed to handle various aspects of date and time, ensuring accuracy and ease of use in a variety of applications.",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonguip/World-Date"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "date",
+    "time",
+    "world-date",
+    "world-time",
+    "world-date-time",
+    "world-date-time-library",
+    "world-date-library",
+    "world-time-library"
+  ],
+  "author": "Ponlawat Khamlae",
+  "license": "MIT"
+}
