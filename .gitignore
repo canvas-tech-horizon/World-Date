@@ -129,3 +129,8 @@ dist
 # tsup
 tsup.config.ts
 tsconfig.json
+
+# lockfileVersion
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
