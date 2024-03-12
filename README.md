@@ -42,6 +42,7 @@ Welcome to the WorldDate library – a powerful and versatile JavaScript library
 ## Getting Started
 
 ```typescript
+// ts
 import WorldDate from 'world-date';
 
 const currentDate = new WorldDate();
