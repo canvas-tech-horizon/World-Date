@@ -1610,6 +1610,86 @@ class WorldDate {
         return calendar;
     }
 
+    /**
+     * The `getCalendarFrom` function returns a calendar layout for the month of the date.
+     * @param day - The `day` parameter is a number representing the day of the week (from 0 to 6) to start
+     * the calendar layout.
+     * @param month - The `month` parameter is a number representing the month of the year (from 0 to 11) to
+     * start the calendar layout.
+     * @param year - The `year` parameter is a number representing the year to start the calendar layout.
+     * @returns The `getCalendarFrom` method returns a two-dimensional array representing the calendar layout
+     * for the month of the date. Each element in the array represents a week, and each subarray represents the
+     * days of the week.
+     * @example
+     * ```typescript
+     * const date = new WorldDate();
+     * console.log(date.getCalendarFrom(0, 11, 2022));
+     * ```
+     */
+
+    getCalendarFrom(day:number,month:number,year:number): number[][] {
+        const calendar: number[][] = [];
+        const daysInMonth = this.getDaysInMonth();
+        const firstDay = new Date(year, month, 1).getDay();
+        let week: number[] = [];
+        for (let i = 0; i < firstDay; i++) {
+            week.push(0);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            week.push(day);
+            if (week.length === 7) {
+                calendar.push(week);
+                week = [];
+            }
+        }
+
+        for (let i = 0; i <= 7 - week.length; i++) {
+            week.push(0);
+        }
+
+        calendar.push(week);
+
+        return calendar;
+
+    }
+
+    /**
+     * The `isDST` function checks if the date is in daylight saving time.
+     * @returns The `isDST` method returns a boolean value indicating whether the date is in daylight
+     * saving time.
+     * @example
+     * ```typescript
+     * const date = new WorldDate();
+     * console.log(date.isDST()); // false
+     * ```
+     */
+
+    isDST(): boolean {
+        const jan = new Date(this.date.getFullYear(), 0, 1);
+        const jul = new Date(this.date.getFullYear(), 6, 1);
+        return this.date.getTimezoneOffset() < Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+    }
+
+    /**
+     * The `getDaylightSavingTime` function returns the number of milliseconds in daylight saving time for the date.
+     * @returns The `getDaylightSavingTime` method returns the number of milliseconds in daylight saving time for the date.
+     * @example
+     * ```typescript
+     * const date = new WorldDate();
+     * console.log(date.getDaylightSavingTime()); // 3600000
+     * ```
+     */
+
+    getDaylightSavingTime(): number {
+        const jan = new Date(this.date.getFullYear(), 0, 1);
+        const jul = new Date(this.date.getFullYear(), 6, 1);
+        if (this.date.getTimezoneOffset() < Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())) {
+            return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset()) - this.date.getTimezoneOffset();
+        } else {
+            return 0;
+        }
+    }
 }
 
 export default WorldDate;
