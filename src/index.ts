@@ -1,6 +1,4 @@
 class WorldDate {
-    private date: Date;
-
     /**
      * This TypeScript constructor function initializes a Date object with the current date or a
      * provided date.
@@ -9,15 +7,13 @@ class WorldDate {
      * to initialize the `date` property of the class. If no `Date` object is provided, the current
      * date
      */
-    constructor(date?: Date) {
+    constructor(private date: Date = new Date()) {
         if (date) {
             this.date = new Date(date);
         } else {
             this.date = new Date();
         }
     }
-
-    // Date Manipulation
 
     /**
      * The function `addMilliseconds` adds a specified number of milliseconds to a date object and

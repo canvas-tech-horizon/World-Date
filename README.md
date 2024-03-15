@@ -76,3 +76,19 @@ npm install world-date
 [fossa-badge-image]: https://app.fossa.com/api/projects/custom%2B43538%2Fgithub.com%2Fcanvas-tech-horizon%2FWorld-Date.svg?type=small
 [fossa-badge-url]: https://app.fossa.com/projects/custom%2B43538%2Fgithub.com%2Fcanvas-tech-horizon%2FWorld-Date?ref=badge_small
 
+## Document
+
+### Constructor Function: DateInitializer
+
+This TypeScript constructor function initializes a Date object with the current date or a provided date.
+
+#### Parameters
+
+- `date` (optional): The `date` parameter in the constructor is an optional parameter of type `Date`. If a `Date` object is provided when creating an instance of the class, it will be used to initialize the `date` property of the class. If no `Date` object is provided, the current date.
+
+#### Example
+```typescript
+const today = new DateInitializer(); </br>
+const customDate = new DateInitializer(new Date('2024-03-15'));
+```
+
