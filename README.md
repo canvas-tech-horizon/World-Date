@@ -2,9 +2,9 @@
 [![MIT License][license-image]][license-url]
 [![FOSSA Status][fossa-badge-image]][fossa-badge-url]
 
-# World Date
+# world-date
 
-Welcome to the WorldDate library – a powerful and versatile JavaScript library for seamless date and time manipulation. This library offers a comprehensive set of functions designed to handle various aspects of date and time, ensuring accuracy and ease of use in a variety of applications.
+WorldDate library – a powerful and versatile JavaScript library for seamless date and time manipulation. This library offers a comprehensive set of functions designed to handle various aspects of date and time, ensuring accuracy and ease of use in a variety of applications.
 
 ## Features
 
