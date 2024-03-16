@@ -427,7 +427,7 @@ declare class WorldDate {
      */
     getUTCDate(): number;
     /**
-     * This function returns the month component (0-11) of a Date object in UTC time.
+     * This function returns the month component (1-12) of a Date object in UTC time.
      * @returns The `getUTCMonth()` method is being called on the `date` object to retrieve the month
      * component of the date in UTC time. The method returns a number representing the month, where
      * January is 0 and December is 11.
@@ -514,6 +514,16 @@ declare class WorldDate {
     */
     getZone(): number;
     /**
+     * getOffset() returns the time zone offset in minutes for the current date.
+     * @returns The `getOffset()` method returns the time zone offset in minutes for the current date.
+     * @example
+     * ```typescript
+     * const date = new WorldDate();
+     * console.log(date.getOffset()); // -300
+     * ```
+    */
+    getOffset(): number;
+    /**
      * getLocalDay() returns the day of the week (0-6) for the current date.
      * @returns The `getLocalDay()` method returns the day of the week (from 0 to 6) for the current
      * date according to local time.
@@ -536,7 +546,7 @@ declare class WorldDate {
     */
     getLocalDate(): number;
     /**
-     * getLocalMonth() returns the month (0-11) for the current date.
+     * getLocalMonth() returns the month (1-12) for the current date.
      * @returns The `getLocalMonth()` method returns the month (from 0 to 11) for the current date
      * according to local time.
      * @example
@@ -994,6 +1004,42 @@ declare class WorldDate {
      * ```
      */
     getCalendar(): number[][];
+    /**
+     * The `getCalendarFrom` function returns a calendar layout for the month of the date.
+     * @param month - The `month` parameter is a number representing the month of the year (from 1 to 12) to
+     * start the calendar layout.
+     * @param year - The `year` parameter is a number representing the year to start the calendar layout.
+     * @returns The `getCalendarFrom` method returns a two-dimensional array representing the calendar layout
+     * for the month of the date. Each element in the array represents a week, and each subarray represents the
+     * days of the week.
+     * @example
+     * ```typescript
+     * const date = new WorldDate();
+     * console.log(date.getCalendarFrom(0, 11, 2022));
+     * ```
+     */
+    getCalendarFrom(month: number, year: number): number[][];
+    /**
+     * The `isDST` function checks if the date is in daylight saving time.
+     * @returns The `isDST` method returns a boolean value indicating whether the date is in daylight
+     * saving time.
+     * @example
+     * ```typescript
+     * const date = new WorldDate();
+     * console.log(date.isDST()); // false
+     * ```
+     */
+    isDST(): boolean;
+    /**
+     * The `getDaylightSavingTime` function returns the number of milliseconds in daylight saving time for the date.
+     * @returns The `getDaylightSavingTime` method returns the number of milliseconds in daylight saving time for the date.
+     * @example
+     * ```typescript
+     * const date = new WorldDate();
+     * console.log(date.getDaylightSavingTime()); // 3600000
+     * ```
+     */
+    getDaylightSavingTime(): number;
 }
 
 export { WorldDate as default };

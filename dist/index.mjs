@@ -1,6 +1,5 @@
 // src/index.ts
 var WorldDate = class _WorldDate {
-  date;
   /**
    * This TypeScript constructor function initializes a Date object with the current date or a
    * provided date.
@@ -9,14 +8,14 @@ var WorldDate = class _WorldDate {
    * to initialize the `date` property of the class. If no `Date` object is provided, the current
    * date
    */
-  constructor(date) {
+  constructor(date = /* @__PURE__ */ new Date()) {
+    this.date = date;
     if (date) {
       this.date = new Date(date);
     } else {
       this.date = /* @__PURE__ */ new Date();
     }
   }
-  // Date Manipulation
   /**
    * The function `addMilliseconds` adds a specified number of milliseconds to a date object and
    * returns a new `WorldDate` object.
@@ -623,13 +622,13 @@ var WorldDate = class _WorldDate {
     return this.date.getUTCDate();
   }
   /**
-   * This function returns the month component (0-11) of a Date object in UTC time.
+   * This function returns the month component (1-12) of a Date object in UTC time.
    * @returns The `getUTCMonth()` method is being called on the `date` object to retrieve the month
    * component of the date in UTC time. The method returns a number representing the month, where
    * January is 0 and December is 11.
    */
   getUTCMonth() {
-    return this.date.getUTCMonth();
+    return this.date.getUTCMonth() + 1;
   }
   /**
    * The function getUTCYear() returns the UTC year of a given date.
@@ -741,6 +740,18 @@ var WorldDate = class _WorldDate {
     return -this.date.getTimezoneOffset() / 60;
   }
   /**
+   * getOffset() returns the time zone offset in minutes for the current date.
+   * @returns The `getOffset()` method returns the time zone offset in minutes for the current date.
+   * @example
+   * ```typescript
+   * const date = new WorldDate();
+   * console.log(date.getOffset()); // -300
+   * ```
+  */
+  getOffset() {
+    return this.date.getTimezoneOffset();
+  }
+  /**
    * getLocalDay() returns the day of the week (0-6) for the current date.
    * @returns The `getLocalDay()` method returns the day of the week (from 0 to 6) for the current
    * date according to local time.
@@ -767,7 +778,7 @@ var WorldDate = class _WorldDate {
     return this.date.getDate();
   }
   /**
-   * getLocalMonth() returns the month (0-11) for the current date.
+   * getLocalMonth() returns the month (1-12) for the current date.
    * @returns The `getLocalMonth()` method returns the month (from 0 to 11) for the current date
    * according to local time.
    * @example
@@ -777,7 +788,7 @@ var WorldDate = class _WorldDate {
    * ```
   */
   getLocalMonth() {
-    return this.date.getMonth();
+    return this.date.getMonth() + 1;
   }
   /**
    * getLocalYear() returns the year for the current date.
@@ -991,7 +1002,7 @@ var WorldDate = class _WorldDate {
       throw new Error("Invalid month");
     }
     const result = new Date(this.date);
-    result.setUTCMonth(month);
+    result.setUTCMonth(month - 1);
     return new _WorldDate(result);
   }
   /**
@@ -1169,7 +1180,7 @@ var WorldDate = class _WorldDate {
       throw new Error("Invalid month");
     }
     const result = new Date(this.date);
-    result.setMonth(month);
+    result.setMonth(month - 1);
     return new _WorldDate(result);
   }
   /**
@@ -1457,6 +1468,74 @@ var WorldDate = class _WorldDate {
     }
     calendar.push(week);
     return calendar;
+  }
+  /**
+   * The `getCalendarFrom` function returns a calendar layout for the month of the date.
+   * @param month - The `month` parameter is a number representing the month of the year (from 1 to 12) to
+   * start the calendar layout.
+   * @param year - The `year` parameter is a number representing the year to start the calendar layout.
+   * @returns The `getCalendarFrom` method returns a two-dimensional array representing the calendar layout
+   * for the month of the date. Each element in the array represents a week, and each subarray represents the
+   * days of the week.
+   * @example
+   * ```typescript
+   * const date = new WorldDate();
+   * console.log(date.getCalendarFrom(0, 11, 2022));
+   * ```
+   */
+  getCalendarFrom(month, year) {
+    const calendar = [];
+    const daysInMonth = this.getDaysInMonth();
+    const firstDay = new Date(year, month, 1).getDay();
+    let week = [];
+    for (let i = 0; i < firstDay; i++) {
+      week.push(0);
+    }
+    for (let day = 1; day <= daysInMonth; day++) {
+      week.push(day);
+      if (week.length === 7) {
+        calendar.push(week);
+        week = [];
+      }
+    }
+    for (let i = 0; i <= 7 - week.length; i++) {
+      week.push(0);
+    }
+    calendar.push(week);
+    return calendar;
+  }
+  /**
+   * The `isDST` function checks if the date is in daylight saving time.
+   * @returns The `isDST` method returns a boolean value indicating whether the date is in daylight
+   * saving time.
+   * @example
+   * ```typescript
+   * const date = new WorldDate();
+   * console.log(date.isDST()); // false
+   * ```
+   */
+  isDST() {
+    const jan = new Date(this.date.getFullYear(), 0, 1);
+    const jul = new Date(this.date.getFullYear(), 6, 1);
+    return this.date.getTimezoneOffset() < Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+  }
+  /**
+   * The `getDaylightSavingTime` function returns the number of milliseconds in daylight saving time for the date.
+   * @returns The `getDaylightSavingTime` method returns the number of milliseconds in daylight saving time for the date.
+   * @example
+   * ```typescript
+   * const date = new WorldDate();
+   * console.log(date.getDaylightSavingTime()); // 3600000
+   * ```
+   */
+  getDaylightSavingTime() {
+    const jan = new Date(this.date.getFullYear(), 0, 1);
+    const jul = new Date(this.date.getFullYear(), 6, 1);
+    if (this.date.getTimezoneOffset() < Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())) {
+      return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset()) - this.date.getTimezoneOffset();
+    } else {
+      return 0;
+    }
   }
 };
 var src_default = WorldDate;
