@@ -672,13 +672,13 @@ class WorldDate {
     }
 
     /**
-     * This function returns the month component (0-11) of a Date object in UTC time.
+     * This function returns the month component (1-12) of a Date object in UTC time.
      * @returns The `getUTCMonth()` method is being called on the `date` object to retrieve the month
      * component of the date in UTC time. The method returns a number representing the month, where
      * January is 0 and December is 11.
      */
     getUTCMonth(): number {
-        return this.date.getUTCMonth();
+        return this.date.getUTCMonth() + 1;
     }
 
     /**
@@ -847,7 +847,7 @@ class WorldDate {
     }
 
     /**
-     * getLocalMonth() returns the month (0-11) for the current date.
+     * getLocalMonth() returns the month (1-12) for the current date.
      * @returns The `getLocalMonth()` method returns the month (from 0 to 11) for the current date
      * according to local time.
      * @example
@@ -858,7 +858,7 @@ class WorldDate {
     */
 
     getLocalMonth(): number {
-        return this.date.getMonth();
+        return this.date.getMonth() + 1;
     }
 
     /**
@@ -1097,7 +1097,7 @@ class WorldDate {
             throw new Error('Invalid month');
         }
         const result = new Date(this.date);
-        result.setUTCMonth(month);
+        result.setUTCMonth(month - 1);
         return new WorldDate(result);
     }
 
@@ -1288,7 +1288,7 @@ class WorldDate {
             throw new Error('Invalid month');
         }
         const result = new Date(this.date);
-        result.setMonth(month);
+        result.setMonth(month - 1);
         return new WorldDate(result);
     }
 
@@ -1622,9 +1622,7 @@ class WorldDate {
 
     /**
      * The `getCalendarFrom` function returns a calendar layout for the month of the date.
-     * @param day - The `day` parameter is a number representing the day of the week (from 0 to 6) to start
-     * the calendar layout.
-     * @param month - The `month` parameter is a number representing the month of the year (from 0 to 11) to
+     * @param month - The `month` parameter is a number representing the month of the year (from 1 to 12) to
      * start the calendar layout.
      * @param year - The `year` parameter is a number representing the year to start the calendar layout.
      * @returns The `getCalendarFrom` method returns a two-dimensional array representing the calendar layout
@@ -1637,7 +1635,7 @@ class WorldDate {
      * ```
      */
 
-    getCalendarFrom(day:number,month:number,year:number): number[][] {
+    getCalendarFrom(month:number,year:number): number[][] {
         const calendar: number[][] = [];
         const daysInMonth = this.getDaysInMonth();
         const firstDay = new Date(year, month, 1).getDay();
