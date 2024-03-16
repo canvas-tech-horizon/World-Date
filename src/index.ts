@@ -803,6 +803,20 @@ class WorldDate {
     }
 
     /**
+     * getOffset() returns the time zone offset in minutes for the current date.
+     * @returns The `getOffset()` method returns the time zone offset in minutes for the current date.
+     * @example
+     * ```typescript
+     * const date = new WorldDate();
+     * console.log(date.getOffset()); // -300
+     * ```
+    */
+
+    getOffset(): number {
+        return this.date.getTimezoneOffset();
+    }
+
+    /**
      * getLocalDay() returns the day of the week (0-6) for the current date.
      * @returns The `getLocalDay()` method returns the day of the week (from 0 to 6) for the current
      * date according to local time.
