@@ -1,5 +1,4 @@
-declare class WorldDate {
-    private date;
+declare class WorldDate extends Date {
     /**
      * This TypeScript constructor function initializes a Date object with the current date or a
      * provided date.
@@ -8,7 +7,6 @@ declare class WorldDate {
      * to initialize the `date` property of the class. If no `Date` object is provided, the current
      * date
      */
-    constructor(date?: Date);
     /**
      * The function `addMilliseconds` adds a specified number of milliseconds to a date object and
      * returns a new `WorldDate` object.
@@ -149,7 +147,7 @@ declare class WorldDate {
      * @param {WorldDate} date - The `date` parameter in the `diffInMilliseconds` function is of type
      * `WorldDate`, which likely represents a date object specific to your application or system. The
      * function calculates the difference in milliseconds between the `date` passed as an argument and
-     * the `this.date` property of the object where
+     * the `this` property of the object where
      * @returns The function `diffInMilliseconds` is returning the difference in milliseconds between
      * the `date` passed as a parameter and the `date` property of the current object (`this`).
      */
@@ -173,7 +171,7 @@ declare class WorldDate {
      * @returns The function `diffInMinutes` is returning the difference in minutes between the current
      * date and the provided `WorldDate` parameter. It calculates this difference by first getting the
      * difference in seconds using the `diffInSeconds` method and then converting that to minutes by
-     * dividing by 60 and flooring the result.
+     * dividing by 60 and flooring the this.
      */
     diffInMinutes(date: WorldDate): number;
     /**
@@ -204,10 +202,10 @@ declare class WorldDate {
      * The function `diffInMonths` calculates the difference in months between two WorldDate objects.
      * @param {WorldDate} date - The `date` parameter in the `diffInMonths` function is an object of
      * type `WorldDate`. It seems like the function is calculating the difference in months between the
-     * `date` property of the current object (`this.date`) and the `date` property of the passed
+     * `date` property of the current object (`this`) and the `date` property of the passed
      * `WorldDate`
      * @returns The function `diffInMonths(date: WorldDate): number` returns the difference in months
-     * between the date stored in the current object (`this.date`) and the date passed as an argument
+     * between the date stored in the current object (`this`) and the date passed as an argument
      * (`date`).
      */
     diffInMonths(date: WorldDate): number;
@@ -215,10 +213,10 @@ declare class WorldDate {
      * The function calculates the difference in years between the current date and a given date.
      * @param {WorldDate} date - The `date` parameter in the `diffInYears` function is of type
      * `WorldDate`, which likely represents a date object in the context of your program. The function
-     * calculates the difference in years between the year of the current date (`this.date`) and the
+     * calculates the difference in years between the year of the current date (`this`) and the
      * year of the provided `WorldDate
      * @returns The function `diffInYears` is returning the difference in years between the year of the
-     * current date (`this.date`) and the year of the input `WorldDate` object (`date.date`).
+     * current date (`this`) and the year of the input `WorldDate` object (`date.date`).
      */
     diffInYears(date: WorldDate): number;
     /**
@@ -226,7 +224,7 @@ declare class WorldDate {
      * determine if it is before that date.
      * @param {WorldDate} date - The `date` parameter in the `isBefore` function is of type
      * `WorldDate`, which seems to be a custom date object. The function compares the time of the
-     * current date object (`this.date`) with the time of the `date` parameter to determine if the
+     * current date object (`this`) with the time of the `date` parameter to determine if the
      * current date is before the
      * @returns A boolean value indicating whether the date stored in the current object is before the
      * date passed as a parameter.
@@ -237,7 +235,7 @@ declare class WorldDate {
      * and returns true if the current date is after the other date.
      * @param {WorldDate} date - The `date` parameter in the `isAfter` function is of type `WorldDate`,
      * which seems to be a custom date object. The function compares the time of the current date
-     * object (`this.date`) with the time of the `date` parameter to determine if the current date is
+     * object (`this`) with the time of the `date` parameter to determine if the current date is
      * after the
      * @returns A boolean value indicating whether the date stored in the current object is after the
      * date passed as a parameter.
@@ -248,7 +246,7 @@ declare class WorldDate {
      * returns a boolean indicating whether they are equal.
      * @param {WorldDate} date - The `date` parameter in the `isEqual` function is of type `WorldDate`,
      * which represents a date object in the world. The function compares the time value of the current
-     * date object (`this.date`) with the time value of the `date` parameter to determine if they are
+     * date object (`this`) with the time value of the `date` parameter to determine if they are
      * equal.
      * @returns A boolean value indicating whether the time of the date stored in the current object is
      * equal to the time of the date passed as a parameter.
@@ -261,7 +259,7 @@ declare class WorldDate {
      * object named `date` as a parameter for comparison. The `WorldDate` object likely contains
      * information about a specific date
      * @returns A boolean value indicating whether the year, month, and date of the current date object
-     * (`this.date`) are the same as the year, month, and date of the `WorldDate` object passed as a
+     * (`this`) are the same as the year, month, and date of the `WorldDate` object passed as a
      * parameter (`date`).
      */
     isSameDay(date: WorldDate): boolean;
@@ -269,11 +267,11 @@ declare class WorldDate {
      * The function `isSameMonth` compares the year and month of two WorldDate objects to determine if
      * they are in the same month.
      * @param {WorldDate} date - The `isSameMonth` function is checking if the year and month of the
-     * current date (`this.date`) are the same as the year and month of the input `WorldDate` object
+     * current date (`this`) are the same as the year and month of the input `WorldDate` object
      * (`date.date`). If both the year and month match, the function returns `true`, indicating that
      * the two
      * @returns The function `isSameMonth` is returning a boolean value, which indicates whether the
-     * year and month of the current date object (`this.date`) are the same as the year and month of
+     * year and month of the current date object (`this`) are the same as the year and month of
      * the date object passed as a parameter (`date.date`).
      */
     isSameMonth(date: WorldDate): boolean;
@@ -284,7 +282,7 @@ declare class WorldDate {
      * `WorldDate`, which contains a property `date` that represents a date object. The function
      * compares the year of the current date with the year of the provided `WorldDate` object to
      * determine if they are the same
-     * @returns A boolean value indicating whether the year of the current date object (`this.date`) is
+     * @returns A boolean value indicating whether the year of the current date object (`this`) is
      * the same as the year of the input `WorldDate` object (`date.date`).
      */
     isSameYear(date: WorldDate): boolean;
@@ -331,7 +329,7 @@ declare class WorldDate {
      * The static now() function returns a new instance of the WorldDate class.
      * @returns An instance of the `WorldDate` class is being returned.
      */
-    static now(): WorldDate;
+    static atNow(): WorldDate;
     /**
      * The function `tomorrow` returns a `WorldDate` object representing the start of the next day.
      * @returns A new `WorldDate` object representing tomorrow's date at the start of the day.
@@ -392,7 +390,6 @@ declare class WorldDate {
      * @returns The `getUTCMilliseconds()` method returns the milliseconds (from 0 to 999) of the
      * specified date and time in Coordinated Universal Time (UTC).
      */
-    getUTCMilliseconds(): number;
     /**
      * The `getUTCSeconds` function returns the seconds component of a Date object in Coordinated
      * Universal Time (UTC).
@@ -400,39 +397,34 @@ declare class WorldDate {
      * object, and it returns the seconds (from 0 to 59) of the specified date and time in Coordinated
      * Universal Time (UTC).
      */
-    getUTCSeconds(): number;
     /**
      * This function returns the minutes component of the UTC time from a given date.
      * @returns The `getUTCMinutes()` method is being called on the `date` property of the current
      * object, and it returns the minutes (from 0 to 59) of the UTC time of the date stored in the
      * `date` property.
      */
-    getUTCMinutes(): number;
     /**
      * This function returns the hour component of a Date object in Coordinated Universal Time (UTC).
      * @returns The `getUTCHours()` method is being called on the `date` object, which returns the hour
      * (0-23) in Coordinated Universal Time (UTC).
      */
-    getUTCHours(): number;
     /**
      * The function `getUTCDay` returns the day of the week (0-6) for a given date in UTC time.
      * @returns The `getUTCDay()` method returns the day of the week (from 0 to 6) for the specified
      * date according to universal time (UTC).
      */
-    getUTCDay(): number;
     /**
      * The `getUTCDate` function returns the day of the month (1-31) of a Date object in UTC time.
      * @returns The `getUTCDate()` method is returning the day of the month (from 1 to 31) of the date
      * object in Coordinated Universal Time (UTC).
      */
-    getUTCDate(): number;
     /**
      * This function returns the month component (1-12) of a Date object in UTC time.
      * @returns The `getUTCMonth()` method is being called on the `date` object to retrieve the month
      * component of the date in UTC time. The method returns a number representing the month, where
      * January is 0 and December is 11.
      */
-    getUTCMonth(): number;
+    getUTCMonths(): number;
     /**
      * The function getUTCYear() returns the UTC year of a given date.
      * @returns The `getUTCYear()` method returns the year (as a four-digit number) of the specified
@@ -445,7 +437,6 @@ declare class WorldDate {
      * and it returns the number of milliseconds since January 1, 1970, 00:00:00 UTC represented by the
      * `Date` object.
      */
-    getTime(): number;
     /**
      * The `getTimestamp` function in TypeScript returns the timestamp of a date object.
      * @returns The `getTimestamp` method is returning the timestamp value of the `date` property in
@@ -505,7 +496,7 @@ declare class WorldDate {
      * getZone() returns the time zone offset in hours for the current date.
      * @returns The `getZone()` method returns the time zone offset in hours for the current date.
      * It calculates the time zone offset by dividing the time zone offset in minutes by 60 and
-     * returning the result.
+     * returning the this.
      * @example
      * ```typescript
      * const date = new WorldDate();
@@ -625,46 +616,6 @@ declare class WorldDate {
      */
     fromNow(): string;
     /**
-     * The `setUTCMilliseconds` function sets the milliseconds component of the date in UTC time.
-     * @param {number} milliseconds - The `milliseconds` parameter is a number representing the
-     * milliseconds component of the date in Coordinated Universal Time (UTC).
-     * @returns The `setUTCMilliseconds` method returns a new `WorldDate` object with the milliseconds
-     * component set to the specified value.
-     */
-    setUTCMilliseconds(milliseconds: number): WorldDate;
-    /**
-     * The `setUTCSeconds` function sets the seconds component of the date in UTC time.
-     * @param {number} seconds - The `seconds` parameter is a number representing the seconds component
-     * of the date in Coordinated Universal Time (UTC).
-     * @returns The `setUTCSeconds` method returns a new `WorldDate` object with the seconds component
-     * set to the specified value.
-     */
-    setUTCSeconds(seconds: number): WorldDate;
-    /**
-     * The `setUTCMinutes` function sets the minutes component of the date in UTC time.
-     * @param {number} minutes - The `minutes` parameter is a number representing the minutes component
-     * of the date in Coordinated Universal Time (UTC).
-     * @returns The `setUTCMinutes` method returns a new `WorldDate` object with the minutes component
-     * set to the specified value.
-     */
-    setUTCMinutes(minutes: number): WorldDate;
-    /**
-     * The `setUTCHours` function sets the hour component of the date in UTC time.
-     * @param {number} hours - The `hours` parameter is a number representing the hour component of the
-     * date in Coordinated Universal Time (UTC).
-     * @returns The `setUTCHours` method returns a new `WorldDate` object with the hour component set to
-     * the specified value.
-     */
-    setUTCHours(hours: number): WorldDate;
-    /**
-     * The `setUTCDate` function sets the day of the month (1-31) of the date in UTC time.
-     * @param {number} date - The `date` parameter is a number representing the day of the month (from
-     * 1 to 31) in Coordinated Universal Time (UTC).
-     * @returns The `setUTCDate` method returns a new `WorldDate` object with the day of the month set to
-     * the specified value.
-     */
-    setUTCDate(date: number): WorldDate;
-    /**
      * The `setUTCMonth` function sets the month (1-12) of the date in UTC time.
      * @param {number} month - The `month` parameter is a number representing the month of the year (from
      * 1 to 12) in Coordinated Universal Time (UTC).
@@ -676,7 +627,7 @@ declare class WorldDate {
      * console.log(date.setUTCMonth(12)); // 2022-12-15T15:30:45.500Z
      * ```
      */
-    setUTCMonth(month: number): WorldDate;
+    setUTCMonths(month: number): WorldDate;
     /**
      * The `setUTCYear` function sets the year of the date in UTC time.
      * @param {number} year - The `year` parameter is a number representing the year of the date in
@@ -702,7 +653,7 @@ declare class WorldDate {
      * console.log(date.setTime(1639569045500)); // 2022-12-15T15:30:45.500Z
      * ```
      */
-    setTime(time: number): WorldDate;
+    setTimes(time: number): WorldDate;
     /**
      * The `setUnixTimestamp` function sets the date and time based on a Unix timestamp.
      * @param {number} timestamp - The `timestamp` parameter is a number representing the number of
@@ -904,7 +855,6 @@ declare class WorldDate {
      * toString() returns a string representing the date and time.
      * @returns The `toString` method returns a string representing the date and time.
      */
-    toString(): string;
     /**
      * toDateString() returns a string representing the date.
      * @returns The `toDateString` method returns a string representing the date.
@@ -914,7 +864,6 @@ declare class WorldDate {
      * console.log(date.toDateString());
      * ```
      */
-    toDateString(): string;
     /**
      * toTimeString() returns a string representing the time.
      * @returns The `toTimeString` method returns a string representing the time.
@@ -924,7 +873,6 @@ declare class WorldDate {
      * console.log(date.toTimeString());
      * ```
      */
-    toTimeString(): string;
     /**
      * toLocaleDateString() returns a string representing the date in the current locale.
      * @returns The `toLocaleDateString` method returns a string representing the date in the current
@@ -935,7 +883,6 @@ declare class WorldDate {
      * console.log(date.toLocaleDateString());
      * ```
      */
-    toLocaleDateString(): string;
     /**
      * toLocaleTimeString() returns a string representing the time in the current locale.
      * @returns The `toLocaleTimeString` method returns a string representing the time in the current
@@ -946,7 +893,6 @@ declare class WorldDate {
      * console.log(date.toLocaleTimeString());
      * ```
      */
-    toLocaleTimeString(): string;
     /**
      * toLocaleString() returns a string representing the date and time in the current locale.
      * @returns The `toLocaleString` method returns a string representing the date and time in the current
@@ -957,7 +903,6 @@ declare class WorldDate {
      * console.log(date.toLocaleString());
      * ```
      */
-    toLocaleString(): string;
     /**
      * toLocaleFormat() returns a string representing the date and time in the current locale.
      * @param options - The `options` parameter is an object with properties that control the format of
@@ -980,7 +925,6 @@ declare class WorldDate {
      * console.log(date.toISOString());
      * ```
      */
-    toISOString(): string;
     /**
      * toUTCString() returns a string representing the date and time in UTC time.
      * @returns The `toUTCString` method returns a string representing the date and time in Coordinated
@@ -991,7 +935,6 @@ declare class WorldDate {
      * console.log(date.toUTCString());
      * ```
      */
-    toUTCString(): string;
     /**
      * The `getCalendar` function returns a calendar layout for the month of the date.
      * @returns The `getCalendar` method returns a two-dimensional array representing the calendar layout

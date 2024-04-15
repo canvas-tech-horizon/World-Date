@@ -1,4 +1,4 @@
-class WorldDate {
+class WorldDate extends Date {
     /**
      * This TypeScript constructor function initializes a Date object with the current date or a
      * provided date.
@@ -7,13 +7,14 @@ class WorldDate {
      * to initialize the `date` property of the class. If no `Date` object is provided, the current
      * date
      */
-    constructor(private date: Date = new Date()) {
-        if (date) {
-            this.date = new Date(date);
-        } else {
-            this.date = new Date();
-        }
-    }
+    // constructor(private date: Date = new Date()) {
+    //     super();
+    //     if (date) {
+    //         this = new Date(date);
+    //     } else {
+    //         this = new Date();
+    //     }
+    // }
 
     /**
      * The function `addMilliseconds` adds a specified number of milliseconds to a date object and
@@ -27,9 +28,9 @@ class WorldDate {
         if (milliseconds < 0) {
             throw new Error('Milliseconds cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setMilliseconds(this.date.getMilliseconds() + milliseconds);
-        return new WorldDate(result);
+        
+        this.setMilliseconds(this.getMilliseconds() + milliseconds);
+        return this;
     }
 
     /**
@@ -44,9 +45,9 @@ class WorldDate {
         if (milliseconds < 0) {
             throw new Error('Milliseconds cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setMilliseconds(result.getMilliseconds() - milliseconds);
-        return new WorldDate(result);
+        
+        this.setMilliseconds(this.getMilliseconds() - milliseconds);
+        return this;
     }
 
     /**
@@ -61,9 +62,9 @@ class WorldDate {
         if (seconds < 0) {
             throw new Error('Seconds cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setSeconds(result.getSeconds() + seconds);
-        return new WorldDate(result);
+        
+        this.setSeconds(this.getSeconds() + seconds);
+        return this;
     }
 
     /**
@@ -80,9 +81,9 @@ class WorldDate {
         if (seconds < 0) {
             throw new Error('Seconds cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setSeconds(result.getSeconds() - seconds);
-        return new WorldDate(result);
+        
+        this.setSeconds(this.getSeconds() - seconds);
+        return this;
     }
 
     /**
@@ -99,9 +100,9 @@ class WorldDate {
         if (minutes < 0) {
             throw new Error('Minutes cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setMinutes(result.getMinutes() + minutes);
-        return new WorldDate(result);
+        
+        this.setMinutes(this.getMinutes() + minutes);
+        return this;
     }
 
     /**
@@ -118,9 +119,9 @@ class WorldDate {
         if (minutes < 0) {
             throw new Error('Minutes cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setMinutes(result.getMinutes() - minutes);
-        return new WorldDate(result);
+        
+        this.setMinutes(this.getMinutes() - minutes);
+        return this;
     }
 
     /**
@@ -135,9 +136,9 @@ class WorldDate {
         if (hours < 0) {
             throw new Error('Hours cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setHours(result.getHours() + hours);
-        return new WorldDate(result);
+        
+        this.setHours(this.getHours() + hours);
+        return this;
     }
 
     /**
@@ -151,9 +152,9 @@ class WorldDate {
         if (hours < 0) {
             throw new Error('Hours cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setHours(result.getHours() - hours);
-        return new WorldDate(result);
+        
+        this.setHours(this.getHours() - hours);
+        return this;
     }
 
     /**
@@ -170,9 +171,9 @@ class WorldDate {
         if (days < 0) {
             throw new Error('Days cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setDate(result.getDate() + days);
-        return new WorldDate(result);
+        
+        this.setDate(this.getDate() + days);
+        return this;
     }
 
     /**
@@ -188,9 +189,9 @@ class WorldDate {
         if (days < 0) {
             throw new Error('Days cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setDate(result.getDate() - days);
-        return new WorldDate(result);
+        
+        this.setDate(this.getDate() - days);
+        return this;
     }
 
     /**
@@ -206,9 +207,9 @@ class WorldDate {
         if (months < 0) {
             throw new Error('Months cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setMonth(result.getMonth() + months);
-        return new WorldDate(result);
+        
+        this.setMonth(this.getMonth() + months);
+        return this;
     }
 
     /**
@@ -223,9 +224,9 @@ class WorldDate {
         if (months < 0) {
             throw new Error('Months cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setMonth(result.getMonth() - months);
-        return new WorldDate(result);
+        
+        this.setMonth(this.getMonth() - months);
+        return this;
     }
 
     /**
@@ -239,9 +240,9 @@ class WorldDate {
         if (years < 0) {
             throw new Error('Years cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setFullYear(result.getFullYear() + years);
-        return new WorldDate(result);
+        
+        this.setFullYear(this.getFullYear() + years);
+        return this;
     }
 
     /**
@@ -256,9 +257,9 @@ class WorldDate {
         if (years < 0) {
             throw new Error('Years cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setFullYear(result.getFullYear() - years);
-        return new WorldDate(result);
+        
+        this.setFullYear(this.getFullYear() - years);
+        return this;
     }
 
     /**
@@ -267,12 +268,12 @@ class WorldDate {
      * @param {WorldDate} date - The `date` parameter in the `diffInMilliseconds` function is of type
      * `WorldDate`, which likely represents a date object specific to your application or system. The
      * function calculates the difference in milliseconds between the `date` passed as an argument and
-     * the `this.date` property of the object where
+     * the `this` property of the object where
      * @returns The function `diffInMilliseconds` is returning the difference in milliseconds between
      * the `date` passed as a parameter and the `date` property of the current object (`this`).
      */
     diffInMilliseconds(date: WorldDate): number {
-        return date.date.getTime() - this.date.getTime();
+        return date.getTime() - this.getTime();
     }
 
     /**
@@ -297,7 +298,7 @@ class WorldDate {
      * @returns The function `diffInMinutes` is returning the difference in minutes between the current
      * date and the provided `WorldDate` parameter. It calculates this difference by first getting the
      * difference in seconds using the `diffInSeconds` method and then converting that to minutes by
-     * dividing by 60 and flooring the result.
+     * dividing by 60 and flooring the this.
      */
     diffInMinutes(date: WorldDate): number {
         return Math.floor(this.diffInSeconds(date) / 60);
@@ -337,27 +338,27 @@ class WorldDate {
      * The function `diffInMonths` calculates the difference in months between two WorldDate objects.
      * @param {WorldDate} date - The `date` parameter in the `diffInMonths` function is an object of
      * type `WorldDate`. It seems like the function is calculating the difference in months between the
-     * `date` property of the current object (`this.date`) and the `date` property of the passed
+     * `date` property of the current object (`this`) and the `date` property of the passed
      * `WorldDate`
      * @returns The function `diffInMonths(date: WorldDate): number` returns the difference in months
-     * between the date stored in the current object (`this.date`) and the date passed as an argument
+     * between the date stored in the current object (`this`) and the date passed as an argument
      * (`date`).
      */
     diffInMonths(date: WorldDate): number {
-        return (date.date.getFullYear() - this.date.getFullYear()) * 12 + date.date.getMonth() - this.date.getMonth();
+        return (date.getFullYear() - this.getFullYear()) * 12 + date.getMonth() - this.getMonth();
     }
 
     /**
      * The function calculates the difference in years between the current date and a given date.
      * @param {WorldDate} date - The `date` parameter in the `diffInYears` function is of type
      * `WorldDate`, which likely represents a date object in the context of your program. The function
-     * calculates the difference in years between the year of the current date (`this.date`) and the
+     * calculates the difference in years between the year of the current date (`this`) and the
      * year of the provided `WorldDate
      * @returns The function `diffInYears` is returning the difference in years between the year of the
-     * current date (`this.date`) and the year of the input `WorldDate` object (`date.date`).
+     * current date (`this`) and the year of the input `WorldDate` object (`date.date`).
      */
     diffInYears(date: WorldDate): number {
-        return date.date.getFullYear() - this.date.getFullYear();
+        return date.getFullYear() - this.getFullYear();
     }
 
     /**
@@ -365,13 +366,13 @@ class WorldDate {
      * determine if it is before that date.
      * @param {WorldDate} date - The `date` parameter in the `isBefore` function is of type
      * `WorldDate`, which seems to be a custom date object. The function compares the time of the
-     * current date object (`this.date`) with the time of the `date` parameter to determine if the
+     * current date object (`this`) with the time of the `date` parameter to determine if the
      * current date is before the
      * @returns A boolean value indicating whether the date stored in the current object is before the
      * date passed as a parameter.
      */
     isBefore(date: WorldDate): boolean {
-        return this.date.getTime() < date.date.getTime();
+        return this.getTime() < date.getTime();
     }
 
     /**
@@ -379,13 +380,13 @@ class WorldDate {
      * and returns true if the current date is after the other date.
      * @param {WorldDate} date - The `date` parameter in the `isAfter` function is of type `WorldDate`,
      * which seems to be a custom date object. The function compares the time of the current date
-     * object (`this.date`) with the time of the `date` parameter to determine if the current date is
+     * object (`this`) with the time of the `date` parameter to determine if the current date is
      * after the
      * @returns A boolean value indicating whether the date stored in the current object is after the
      * date passed as a parameter.
      */
     isAfter(date: WorldDate): boolean {
-        return this.date.getTime() > date.date.getTime();
+        return this.getTime() > date.getTime();
     }
 
     /**
@@ -393,13 +394,13 @@ class WorldDate {
      * returns a boolean indicating whether they are equal.
      * @param {WorldDate} date - The `date` parameter in the `isEqual` function is of type `WorldDate`,
      * which represents a date object in the world. The function compares the time value of the current
-     * date object (`this.date`) with the time value of the `date` parameter to determine if they are
+     * date object (`this`) with the time value of the `date` parameter to determine if they are
      * equal.
      * @returns A boolean value indicating whether the time of the date stored in the current object is
      * equal to the time of the date passed as a parameter.
      */
     isEqual(date: WorldDate): boolean {
-        return this.date.getTime() === date.date.getTime();
+        return this.getTime() === date.getTime();
     }
 
     /**
@@ -409,26 +410,26 @@ class WorldDate {
      * object named `date` as a parameter for comparison. The `WorldDate` object likely contains
      * information about a specific date
      * @returns A boolean value indicating whether the year, month, and date of the current date object
-     * (`this.date`) are the same as the year, month, and date of the `WorldDate` object passed as a
+     * (`this`) are the same as the year, month, and date of the `WorldDate` object passed as a
      * parameter (`date`).
      */
     isSameDay(date: WorldDate): boolean {
-        return this.date.getFullYear() === date.date.getFullYear() && this.date.getMonth() === date.date.getMonth() && this.date.getDate() === date.date.getDate();
+        return this.getFullYear() === date.getFullYear() && this.getMonth() === date.getMonth() && this.getDate() === date.getDate();
     }
 
     /**
      * The function `isSameMonth` compares the year and month of two WorldDate objects to determine if
      * they are in the same month.
      * @param {WorldDate} date - The `isSameMonth` function is checking if the year and month of the
-     * current date (`this.date`) are the same as the year and month of the input `WorldDate` object
+     * current date (`this`) are the same as the year and month of the input `WorldDate` object
      * (`date.date`). If both the year and month match, the function returns `true`, indicating that
      * the two
      * @returns The function `isSameMonth` is returning a boolean value, which indicates whether the
-     * year and month of the current date object (`this.date`) are the same as the year and month of
+     * year and month of the current date object (`this`) are the same as the year and month of
      * the date object passed as a parameter (`date.date`).
      */
     isSameMonth(date: WorldDate): boolean {
-        return this.date.getFullYear() === date.date.getFullYear() && this.date.getMonth() === date.date.getMonth();
+        return this.getFullYear() === date.getFullYear() && this.getMonth() === date.getMonth();
     }
 
     /**
@@ -438,11 +439,11 @@ class WorldDate {
      * `WorldDate`, which contains a property `date` that represents a date object. The function
      * compares the year of the current date with the year of the provided `WorldDate` object to
      * determine if they are the same
-     * @returns A boolean value indicating whether the year of the current date object (`this.date`) is
+     * @returns A boolean value indicating whether the year of the current date object (`this`) is
      * the same as the year of the input `WorldDate` object (`date.date`).
      */
     isSameYear(date: WorldDate): boolean {
-        return this.date.getFullYear() === date.date.getFullYear();
+        return this.getFullYear() === date.getFullYear();
     }
 
     /**
@@ -452,9 +453,9 @@ class WorldDate {
      * UTC time zone.
      */
     startOfDay(): WorldDate {
-        const result = new Date(this.date);
-        result.setHours(0, 0, 0, 0);
-        return new WorldDate(result);
+        
+        this.setHours(0, 0, 0, 0);
+        return this;
     }
 
     /**
@@ -464,9 +465,9 @@ class WorldDate {
      * (23:59:59.999) based on the current date.
      */
     endOfDay(): WorldDate {
-        const result = new Date(this.date);
-        result.setHours(23, 59, 59, 999);
-        return new WorldDate(result);
+        
+        this.setHours(23, 59, 59, 999);
+        return this;
     }
 
     /**
@@ -475,10 +476,10 @@ class WorldDate {
      * @returns An instance of `WorldDate` representing the first day of the month for the given date.
      */
     startOfMonth(): WorldDate {
-        const result = new Date(this.date);
-        result.setDate(1);
-        result.setHours(0, 0, 0, 0);
-        return new WorldDate(result);
+        
+        this.setDate(1);
+        this.setHours(0, 0, 0, 0);
+        return this;
     }
 
     /**
@@ -487,10 +488,10 @@ class WorldDate {
      * @returns A WorldDate object representing the last millisecond of the current month.
      */
     endOfMonth(): WorldDate {
-        const result = new Date(this.date);
-        result.setMonth(result.getMonth() + 1, 0);
-        result.setHours(23, 59, 59, 999);
-        return new WorldDate(result);
+        
+        this.setMonth(this.getMonth() + 1, 0);
+        this.setHours(23, 59, 59, 999);
+        return this;
     }
 
     /**
@@ -500,10 +501,10 @@ class WorldDate {
      * the date stored in the current object.
      */
     startOfYear(): WorldDate {
-        const result = new Date(this.date);
-        result.setMonth(0, 1);
-        result.setHours(0, 0, 0, 0);
-        return new WorldDate(result);
+        
+        this.setMonth(0, 1);
+        this.setHours(0, 0, 0, 0);
+        return this;
     }
 
     /**
@@ -512,17 +513,17 @@ class WorldDate {
      * @returns A WorldDate object representing the last moment of the year of the original date.
      */
     endOfYear(): WorldDate {
-        const result = new Date(this.date);
-        result.setMonth(11, 31);
-        result.setHours(23, 59, 59, 999);
-        return new WorldDate(result);
+        
+        this.setMonth(11, 31);
+        this.setHours(23, 59, 59, 999);
+        return this;
     }
 
     /**
      * The static now() function returns a new instance of the WorldDate class.
      * @returns An instance of the `WorldDate` class is being returned.
      */
-    static now(): WorldDate {
+    static atNow(): WorldDate {
         return new WorldDate();
     }
 
@@ -619,9 +620,9 @@ class WorldDate {
      * @returns The `getUTCMilliseconds()` method returns the milliseconds (from 0 to 999) of the
      * specified date and time in Coordinated Universal Time (UTC).
      */
-    getUTCMilliseconds(): number {
-        return this.date.getUTCMilliseconds();
-    }
+    // getUTCMilliseconds(): number {
+    //     return this.getUTCMilliseconds();
+    // }
 
     /**
      * The `getUTCSeconds` function returns the seconds component of a Date object in Coordinated
@@ -630,9 +631,9 @@ class WorldDate {
      * object, and it returns the seconds (from 0 to 59) of the specified date and time in Coordinated
      * Universal Time (UTC).
      */
-    getUTCSeconds(): number {
-        return this.date.getUTCSeconds();
-    }
+    // getUTCSeconds(): number {
+    //     return this.getUTCSeconds();
+    // }
 
     /**
      * This function returns the minutes component of the UTC time from a given date.
@@ -640,36 +641,36 @@ class WorldDate {
      * object, and it returns the minutes (from 0 to 59) of the UTC time of the date stored in the
      * `date` property.
      */
-    getUTCMinutes(): number {
-        return this.date.getUTCMinutes();
-    }
+    // getUTCMinutes(): number {
+    //     return this.getUTCMinutes();
+    // }
 
     /**
      * This function returns the hour component of a Date object in Coordinated Universal Time (UTC).
      * @returns The `getUTCHours()` method is being called on the `date` object, which returns the hour
      * (0-23) in Coordinated Universal Time (UTC).
      */
-    getUTCHours(): number {
-        return this.date.getUTCHours();
-    }
+    // getUTCHours(): number {
+    //     return this.getUTCHours();
+    // }
 
     /**
      * The function `getUTCDay` returns the day of the week (0-6) for a given date in UTC time.
      * @returns The `getUTCDay()` method returns the day of the week (from 0 to 6) for the specified
      * date according to universal time (UTC).
      */
-    getUTCDay(): number {
-        return this.date.getUTCDay();
-    }
+    // getUTCDay(): number {
+    //     return this.getUTCDay();
+    // }
 
     /**
      * The `getUTCDate` function returns the day of the month (1-31) of a Date object in UTC time.
      * @returns The `getUTCDate()` method is returning the day of the month (from 1 to 31) of the date
      * object in Coordinated Universal Time (UTC).
      */
-    getUTCDate(): number {
-        return this.date.getUTCDate();
-    }
+    // getUTCDate(): number {
+    //     return this.getUTCDate();
+    // }
 
     /**
      * This function returns the month component (1-12) of a Date object in UTC time.
@@ -677,8 +678,8 @@ class WorldDate {
      * component of the date in UTC time. The method returns a number representing the month, where
      * January is 0 and December is 11.
      */
-    getUTCMonth(): number {
-        return this.date.getUTCMonth() + 1;
+    getUTCMonths(): number {
+        return this.getUTCMonth() + 1;
     }
 
     /**
@@ -687,7 +688,7 @@ class WorldDate {
      * date according to universal time.
      */
     getUTCYear(): number {
-        return this.date.getUTCFullYear();
+        return this.getUTCFullYear();
     }
 
     /**
@@ -696,9 +697,9 @@ class WorldDate {
      * and it returns the number of milliseconds since January 1, 1970, 00:00:00 UTC represented by the
      * `Date` object.
      */
-    getTime(): number {
-        return this.date.getTime();
-    }
+    // getTime(): number {
+    //     return this.getTime();
+    // }
 
     /**
      * The `getTimestamp` function in TypeScript returns the timestamp of a date object.
@@ -706,7 +707,7 @@ class WorldDate {
      * milliseconds.
      */
     getTimestamp(): number {
-        return this.date.getTime();
+        return this.getTime();
     }
 
     /**
@@ -715,7 +716,7 @@ class WorldDate {
      * time in seconds.
      */
     getUnixTimestamp(): number {
-        return Math.floor(this.date.getTime() / 1000);
+        return Math.floor(this.getTime() / 1000);
     }
 
     /**
@@ -726,8 +727,8 @@ class WorldDate {
      * rounding down to the nearest whole number.
      */
     getDayOfYear(): number {
-        const start = new Date(this.date.getFullYear(), 0, 0);
-        const diff = this.date.getTime() - start.getTime();
+        const start = new Date(this.getFullYear(), 0, 0);
+        const diff = this.getTime() - start.getTime();
         const oneDay = 1000 * 60 * 60 * 24;
         return Math.floor(diff / oneDay);
     }
@@ -737,7 +738,7 @@ class WorldDate {
      * @returns The `getWeekOfYear` function returns the week number of the year for a given date.
      */
     getWeekOfYear(): number {
-        const date = new Date(this.date);
+        const date = this;
         date.setHours(0, 0, 0, 0);
         date.setDate(date.getDate() + 4 - (date.getDay() || 7));
         const yearStart = new Date(date.getFullYear(), 0, 1);
@@ -750,7 +751,7 @@ class WorldDate {
      * date object it is called on.
      */
     getDaysInMonth(): number {
-        return new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0).getDate();
+        return new Date(this.getFullYear(), this.getMonth() + 1, 0).getDate();
     }
 
     /**
@@ -762,7 +763,7 @@ class WorldDate {
      * non-leap year).
      */
     getDaysInYear(): number {
-        return this.date.getFullYear() % 4 === 0 ? 366 : 365;
+        return this.getFullYear() % 4 === 0 ? 366 : 365;
     }
 
     /**
@@ -771,7 +772,7 @@ class WorldDate {
      * of the date.
      */
     getQuarter(): number {
-        return Math.floor(this.date.getMonth() / 3) + 1;
+        return Math.floor(this.getMonth() / 3) + 1;
     }
 
     /**
@@ -790,7 +791,7 @@ class WorldDate {
      * getZone() returns the time zone offset in hours for the current date.
      * @returns The `getZone()` method returns the time zone offset in hours for the current date.
      * It calculates the time zone offset by dividing the time zone offset in minutes by 60 and
-     * returning the result.
+     * returning the this.
      * @example
      * ```typescript
      * const date = new WorldDate();
@@ -799,7 +800,7 @@ class WorldDate {
     */
 
     getZone(): number {
-        return - this.date.getTimezoneOffset() / 60;
+        return - this.getTimezoneOffset() / 60;
     }
 
     /**
@@ -813,7 +814,7 @@ class WorldDate {
     */
 
     getOffset(): number {
-        return this.date.getTimezoneOffset();
+        return this.getTimezoneOffset();
     }
 
     /**
@@ -828,7 +829,7 @@ class WorldDate {
     */
 
     getLocalDay(): number {
-        return this.date.getDay();
+        return this.getDay();
     }
 
     /**
@@ -843,7 +844,7 @@ class WorldDate {
     */
 
     getLocalDate(): number {
-        return this.date.getDate();
+        return this.getDate();
     }
 
     /**
@@ -858,7 +859,7 @@ class WorldDate {
     */
 
     getLocalMonth(): number {
-        return this.date.getMonth() + 1;
+        return this.getMonth() + 1;
     }
 
     /**
@@ -873,7 +874,7 @@ class WorldDate {
     */
 
     getLocalYear(): number {
-        return this.date.getFullYear();
+        return this.getFullYear();
     }
 
     /**
@@ -888,7 +889,7 @@ class WorldDate {
     */
 
     getLocalHours(): number {
-        return this.date.getHours();
+        return this.getHours();
     }
 
     /**
@@ -903,7 +904,7 @@ class WorldDate {
     */
 
     getLocalMinutes(): number {
-        return this.date.getMinutes();
+        return this.getMinutes();
     }
 
     /**
@@ -918,7 +919,7 @@ class WorldDate {
     */
 
     getLocalSeconds(): number {
-        return this.date.getSeconds();
+        return this.getSeconds();
     }
 
     /**
@@ -933,7 +934,7 @@ class WorldDate {
     */
 
     getLocalMilliseconds(): number {
-        return this.date.getMilliseconds();
+        return this.getMilliseconds();
     }
 
     /**
@@ -950,7 +951,7 @@ class WorldDate {
      */
 
     fromNow(): string {
-        const diff = new Date().getTime() - this.date.getTime();
+        const diff = new Date().getTime() - this.getTime();
         if (diff > 0 && diff < 1000) {
             return 'just now';
         }
@@ -1000,85 +1001,85 @@ class WorldDate {
     
     // Setters
 
-    /**
-     * The `setUTCMilliseconds` function sets the milliseconds component of the date in UTC time.
-     * @param {number} milliseconds - The `milliseconds` parameter is a number representing the
-     * milliseconds component of the date in Coordinated Universal Time (UTC).
-     * @returns The `setUTCMilliseconds` method returns a new `WorldDate` object with the milliseconds
-     * component set to the specified value.
-     */
-    setUTCMilliseconds(milliseconds: number): WorldDate {
-        if (milliseconds < 0) {
-            throw new Error('Milliseconds cannot be negative');
-        }
-        const result = new Date(this.date);
-        result.setUTCMilliseconds(milliseconds);
-        return new WorldDate(result);
-    }
+    // /**
+    //  * The `setUTCMilliseconds` function sets the milliseconds component of the date in UTC time.
+    //  * @param {number} milliseconds - The `milliseconds` parameter is a number representing the
+    //  * milliseconds component of the date in Coordinated Universal Time (UTC).
+    //  * @returns The `setUTCMilliseconds` method returns a new `WorldDate` object with the milliseconds
+    //  * component set to the specified value.
+    //  */
+    // setUTCMilliseconds(milliseconds: number): WorldDate {
+    //     if (milliseconds < 0) {
+    //         throw new Error('Milliseconds cannot be negative');
+    //     }
+    //     
+    //     this.setUTCMilliseconds(milliseconds);
+    //     return this;
+    // }
 
-    /**
-     * The `setUTCSeconds` function sets the seconds component of the date in UTC time.
-     * @param {number} seconds - The `seconds` parameter is a number representing the seconds component
-     * of the date in Coordinated Universal Time (UTC).
-     * @returns The `setUTCSeconds` method returns a new `WorldDate` object with the seconds component
-     * set to the specified value.
-     */
-    setUTCSeconds(seconds: number): WorldDate {
-        if (seconds < 0) {
-            throw new Error('Seconds cannot be negative');
-        }
-        const result = new Date(this.date);
-        result.setUTCSeconds(seconds);
-        return new WorldDate(result);
-    }
+    // /**
+    //  * The `setUTCSeconds` function sets the seconds component of the date in UTC time.
+    //  * @param {number} seconds - The `seconds` parameter is a number representing the seconds component
+    //  * of the date in Coordinated Universal Time (UTC).
+    //  * @returns The `setUTCSeconds` method returns a new `WorldDate` object with the seconds component
+    //  * set to the specified value.
+    //  */
+    // setUTCSeconds(seconds: number): WorldDate {
+    //     if (seconds < 0) {
+    //         throw new Error('Seconds cannot be negative');
+    //     }
+    //     
+    //     this.setUTCSeconds(seconds);
+    //     return this;
+    // }
 
-    /**
-     * The `setUTCMinutes` function sets the minutes component of the date in UTC time.
-     * @param {number} minutes - The `minutes` parameter is a number representing the minutes component
-     * of the date in Coordinated Universal Time (UTC).
-     * @returns The `setUTCMinutes` method returns a new `WorldDate` object with the minutes component
-     * set to the specified value.
-     */
-    setUTCMinutes(minutes: number): WorldDate {
-        if (minutes < 0) {
-            throw new Error('Minutes cannot be negative');
-        }
-        const result = new Date(this.date);
-        result.setUTCMinutes(minutes);
-        return new WorldDate(result);
-    }
+    // /**
+    //  * The `setUTCMinutes` function sets the minutes component of the date in UTC time.
+    //  * @param {number} minutes - The `minutes` parameter is a number representing the minutes component
+    //  * of the date in Coordinated Universal Time (UTC).
+    //  * @returns The `setUTCMinutes` method returns a new `WorldDate` object with the minutes component
+    //  * set to the specified value.
+    //  */
+    // setUTCMinutes(minutes: number): WorldDate {
+    //     if (minutes < 0) {
+    //         throw new Error('Minutes cannot be negative');
+    //     }
+    //     
+    //     this.setUTCMinutes(minutes);
+    //     return this;
+    // }
 
-    /**
-     * The `setUTCHours` function sets the hour component of the date in UTC time.
-     * @param {number} hours - The `hours` parameter is a number representing the hour component of the
-     * date in Coordinated Universal Time (UTC).
-     * @returns The `setUTCHours` method returns a new `WorldDate` object with the hour component set to
-     * the specified value.
-     */
-    setUTCHours(hours: number): WorldDate {
-        if (hours < 0) {
-            throw new Error('Hours cannot be negative');
-        }
-        const result = new Date(this.date);
-        result.setUTCHours(hours);
-        return new WorldDate(result);
-    }
+    // /**
+    //  * The `setUTCHours` function sets the hour component of the date in UTC time.
+    //  * @param {number} hours - The `hours` parameter is a number representing the hour component of the
+    //  * date in Coordinated Universal Time (UTC).
+    //  * @returns The `setUTCHours` method returns a new `WorldDate` object with the hour component set to
+    //  * the specified value.
+    //  */
+    // setUTCHours(hours: number): WorldDate {
+    //     if (hours < 0) {
+    //         throw new Error('Hours cannot be negative');
+    //     }
+    //     
+    //     this.setUTCHours(hours);
+    //     return this;
+    // }
 
-    /**
-     * The `setUTCDate` function sets the day of the month (1-31) of the date in UTC time.
-     * @param {number} date - The `date` parameter is a number representing the day of the month (from
-     * 1 to 31) in Coordinated Universal Time (UTC).
-     * @returns The `setUTCDate` method returns a new `WorldDate` object with the day of the month set to
-     * the specified value.
-     */
-    setUTCDate(date: number): WorldDate {
-        if (date < 1 || date > this.getDaysInMonth()) {
-            throw new Error('Invalid date');
-        }
-        const result = new Date(this.date);
-        result.setUTCDate(date);
-        return new WorldDate(result);
-    }
+    // /**
+    //  * The `setUTCDate` function sets the day of the month (1-31) of the date in UTC time.
+    //  * @param {number} date - The `date` parameter is a number representing the day of the month (from
+    //  * 1 to 31) in Coordinated Universal Time (UTC).
+    //  * @returns The `setUTCDate` method returns a new `WorldDate` object with the day of the month set to
+    //  * the specified value.
+    //  */
+    // setUTCDate(date: number): WorldDate {
+    //     if (date < 1 || date > this.getDaysInMonth()) {
+    //         throw new Error('Invalid date');
+    //     }
+    //     
+    //     this.setUTCDate(date);
+    //     return this;
+    // }
 
     /**
      * The `setUTCMonth` function sets the month (1-12) of the date in UTC time.
@@ -1092,13 +1093,13 @@ class WorldDate {
      * console.log(date.setUTCMonth(12)); // 2022-12-15T15:30:45.500Z
      * ```
      */
-    setUTCMonth(month: number): WorldDate {
+    setUTCMonths(month: number): WorldDate {
         if (month < 1 || month > 12) {
             throw new Error('Invalid month');
         }
-        const result = new Date(this.date);
-        result.setUTCMonth(month - 1);
-        return new WorldDate(result);
+        
+        this.setUTCMonth(month - 1);
+        return this;
     }
 
     /**
@@ -1117,9 +1118,9 @@ class WorldDate {
         if (year < 0) {
             throw new Error('Invalid year');
         }
-        const result = new Date(this.date);
-        result.setUTCFullYear(year);
-        return new WorldDate(result);
+        
+        this.setUTCFullYear(year);
+        return this;
     }
 
     /**
@@ -1134,13 +1135,13 @@ class WorldDate {
      * console.log(date.setTime(1639569045500)); // 2022-12-15T15:30:45.500Z
      * ```
      */
-    setTime(time: number): WorldDate {
+    setTimes(time: number): WorldDate {
         if (time < 0) {
             throw new Error('Invalid time');
         }
-        const result = new Date(this.date);
-        result.setTime(time);
-        return new WorldDate(result);
+        
+        this.setTime(time);
+        return this;
     }
 
     /**
@@ -1178,9 +1179,9 @@ class WorldDate {
         if (milliseconds < 0) {
             throw new Error('Milliseconds cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setMilliseconds(milliseconds);
-        return new WorldDate(result);
+        
+        this.setMilliseconds(milliseconds);
+        return this;
     }
 
     /**
@@ -1199,9 +1200,9 @@ class WorldDate {
         if (seconds < 0) {
             throw new Error('Seconds cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setSeconds(seconds);
-        return new WorldDate(result);
+        
+        this.setSeconds(seconds);
+        return this;
     }
 
     /**
@@ -1221,9 +1222,9 @@ class WorldDate {
         if (minutes < 0) {
             throw new Error('Minutes cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setMinutes(minutes);
-        return new WorldDate(result);
+        
+        this.setMinutes(minutes);
+        return this;
     }
 
     /**
@@ -1243,9 +1244,9 @@ class WorldDate {
         if (hours < 0) {
             throw new Error('Hours cannot be negative');
         }
-        const result = new Date(this.date);
-        result.setHours(hours);
-        return new WorldDate(result);
+        
+        this.setHours(hours);
+        return this;
     }
 
     /**
@@ -1265,9 +1266,9 @@ class WorldDate {
         if (date < 1 || date > this.getDaysInMonth()) {
             throw new Error('Invalid date');
         }
-        const result = new Date(this.date);
-        result.setDate(date);
-        return new WorldDate(result);
+        
+        this.setDate(date);
+        return this;
     }
 
     /**
@@ -1287,9 +1288,9 @@ class WorldDate {
         if (month < 1 || month > 12) {
             throw new Error('Invalid month');
         }
-        const result = new Date(this.date);
-        result.setMonth(month - 1);
-        return new WorldDate(result);
+        // 
+        this.setMonth(month - 1);
+        return this;
     }
 
     /**
@@ -1308,9 +1309,9 @@ class WorldDate {
         if (year < 0) {
             throw new Error('Invalid year');
         }
-        const result = new Date(this.date);
-        result.setFullYear(year);
-        return new WorldDate(result);
+        
+        this.setFullYear(year);
+        return this;
     }
 
     // Validation
@@ -1325,7 +1326,7 @@ class WorldDate {
      * ```
      */
     isValid(): boolean {
-        return !isNaN(this.date.getTime());
+        return !isNaN(this.getTime());
     }
 
     /**
@@ -1339,11 +1340,11 @@ class WorldDate {
      * ```
      */
     isLeapYear(): boolean {
-        if (this.date.getFullYear() % 100 === 0) {
-            return this.date.getFullYear() % 400 === 0;
+        if (this.getFullYear() % 100 === 0) {
+            return this.getFullYear() % 400 === 0;
         }
 
-        return this.date.getFullYear() % 4 === 0;
+        return this.getFullYear() % 4 === 0;
     }
 
     /**
@@ -1357,7 +1358,7 @@ class WorldDate {
      * ```
      */
     isWeekend(): boolean {
-        return this.date.getDay() === 0 || this.date.getDay() === 6;
+        return this.getDay() === 0 || this.getDay() === 6;
     }
 
     /**
@@ -1371,7 +1372,7 @@ class WorldDate {
      */
 
     isToday(): boolean {
-        return this.isSameDay(WorldDate.now());
+        return this.isSameDay(WorldDate.atNow());
     }
 
     /**
@@ -1418,9 +1419,9 @@ class WorldDate {
         if (zone < -12 || zone > 12) {
             throw new Error('Invalid time zone');
         }
-        const result = new Date(this.date);
-        result.setTime(result.getTime() + (zone - this.getZone()) * 3600000);
-        return new WorldDate(result);
+        
+        this.setTime(this.getTime() + (zone - this.getZone()) * 3600000);
+        return this;
     }
 
     // Convert a date and time to a timestamp
@@ -1435,7 +1436,7 @@ class WorldDate {
      * ```
      */
     toTimestamp(): number {
-        return this.date.getTime();
+        return this.getTime();
     }
 
     /**
@@ -1449,7 +1450,7 @@ class WorldDate {
      */
 
     toUnix(): number {
-        return Math.floor(this.date.getTime() / 1000);
+        return Math.floor(this.getTime() / 1000);
     }
 
     // Convert a date and time to a string
@@ -1458,9 +1459,9 @@ class WorldDate {
      * toString() returns a string representing the date and time.
      * @returns The `toString` method returns a string representing the date and time.
      */
-    toString(): string {
-        return this.date.toString();
-    }
+    // toString(): string {
+    //     return this.toString();
+    // }
 
     // Convert a date and time to a human-readable string
 
@@ -1473,9 +1474,9 @@ class WorldDate {
      * console.log(date.toDateString());
      * ```
      */
-    toDateString(): string {
-        return this.date.toDateString();
-    }
+    // toDateString(): string {
+    //     return this.toDateString();
+    // }
 
     /**
      * toTimeString() returns a string representing the time.
@@ -1486,9 +1487,9 @@ class WorldDate {
      * console.log(date.toTimeString());
      * ```
      */
-    toTimeString(): string {
-        return this.date.toTimeString();
-    }
+    // toTimeString(): string {
+    //     return this.toTimeString();
+    // }
 
     /**
      * toLocaleDateString() returns a string representing the date in the current locale.
@@ -1500,9 +1501,9 @@ class WorldDate {
      * console.log(date.toLocaleDateString());
      * ```
      */
-    toLocaleDateString(): string {
-        return this.date.toLocaleDateString();
-    }
+    // toLocaleDateString(): string {
+    //     return this.toLocaleDateString();
+    // }
 
     /**
      * toLocaleTimeString() returns a string representing the time in the current locale.
@@ -1515,9 +1516,9 @@ class WorldDate {
      * ```
      */
 
-    toLocaleTimeString(): string {
-        return this.date.toLocaleTimeString();
-    }
+    // toLocaleTimeString(): string {
+    //     return this.toLocaleTimeString();
+    // }
 
     /**
      * toLocaleString() returns a string representing the date and time in the current locale.
@@ -1530,9 +1531,9 @@ class WorldDate {
      * ```
      */
 
-    toLocaleString(): string {
-        return this.date.toLocaleString();
-    }
+    // toLocaleString(): string {
+    //     return this.toLocaleString();
+    // }
 
     /**
      * toLocaleFormat() returns a string representing the date and time in the current locale.
@@ -1548,7 +1549,7 @@ class WorldDate {
      */
 
     toLocaleFormat(options?: Intl.DateTimeFormatOptions): string {
-        return this.date.toLocaleString(undefined, options);
+        return this.toLocaleString(undefined, options);
     }
 
     /**
@@ -1561,9 +1562,9 @@ class WorldDate {
      * ```
      */
 
-    toISOString(): string {
-        return this.date.toISOString();
-    }
+    // toISOString(): string {
+    //     return this.toISOString();
+    // }
 
     /**
      * toUTCString() returns a string representing the date and time in UTC time.
@@ -1576,9 +1577,9 @@ class WorldDate {
      * ```
      */
 
-    toUTCString(): string {
-        return this.date.toUTCString();
-    }
+    // toUTCString(): string {
+    //     return this.toUTCString();
+    // }
 
     // Calendar Layout
 
@@ -1597,7 +1598,7 @@ class WorldDate {
     getCalendar(): number[][] {
         const calendar: number[][] = [];
         const daysInMonth = this.getDaysInMonth();
-        const firstDay = new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay();
+        const firstDay = new Date(this.getFullYear(), this.getMonth(), 1).getDay();
         let week: number[] = [];
         for (let i = 0; i < firstDay; i++) {
             week.push(0);
@@ -1674,9 +1675,9 @@ class WorldDate {
      */
 
     isDST(): boolean {
-        const jan = new Date(this.date.getFullYear(), 0, 1);
-        const jul = new Date(this.date.getFullYear(), 6, 1);
-        return this.date.getTimezoneOffset() < Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+        const jan = new Date(this.getFullYear(), 0, 1);
+        const jul = new Date(this.getFullYear(), 6, 1);
+        return this.getTimezoneOffset() < Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
     }
 
     /**
@@ -1690,10 +1691,10 @@ class WorldDate {
      */
 
     getDaylightSavingTime(): number {
-        const jan = new Date(this.date.getFullYear(), 0, 1);
-        const jul = new Date(this.date.getFullYear(), 6, 1);
-        if (this.date.getTimezoneOffset() < Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())) {
-            return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset()) - this.date.getTimezoneOffset();
+        const jan = new Date(this.getFullYear(), 0, 1);
+        const jul = new Date(this.getFullYear(), 6, 1);
+        if (this.getTimezoneOffset() < Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())) {
+            return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset()) - this.getTimezoneOffset();
         } else {
             return 0;
         }
