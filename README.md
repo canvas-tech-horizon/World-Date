@@ -1,6 +1,7 @@
 [![NPM version][npm-version-image]][npm-url]
 [![MIT License][license-image]][license-url]
 [![FOSSA Status][fossa-badge-image]][fossa-badge-url]
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O5O4X64KV)
 
 # world-date
 
