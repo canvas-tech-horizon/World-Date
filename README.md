@@ -1,10 +1,11 @@
 [![NPM version][npm-version-image]][npm-url]
 [![MIT License][license-image]][license-url]
-[![FOSSA Status][fossa-badge-image]][fossa-badge-url]
 
 # world-date
 
 WorldDate library – a powerful and versatile JavaScript library for seamless date and time manipulation. This library offers a comprehensive set of functions designed to handle various aspects of date and time, ensuring accuracy and ease of use in a variety of applications.
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcanvas-tech-horizon%2FWorld-Date.svg?type=large&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcanvas-tech-horizon%2FWorld-Date?ref=badge_large&issueType=license)
 
 ## Features
 
